@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 import uuid
 
-
-
 """+@pytest.mark.django_db
 def test_view_unauthorized(client):
    url = reverse('requests')
@@ -27,14 +25,17 @@ def create_user(db, django_user_model, test_password):
 
     return make_user
 
+
 @pytest.fixture
 def auto_login_user(db, client, create_user, test_password):
-   def make_auto_login(user=None):
-       if user is None:
-           user = create_user()
-       client.login(username=user.username, password=test_password)
-       return client, user
-   return make_auto_login
+    def make_auto_login(user=None):
+        if user is None:
+            user = create_user()
+        client.login(username=user.username, password=test_password)
+        return client, user
+
+    return make_auto_login
+
 
 """@pytest.fixture
 def test_password():

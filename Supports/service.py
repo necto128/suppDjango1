@@ -2,6 +2,7 @@ from Supports import models
 from django.core.mail import send_mail
 import suppDjango.settings as siting
 
+
 #
 def get_filter_requvests(request):
     return list(models.Requests.objects.filter(users=request.user.id,

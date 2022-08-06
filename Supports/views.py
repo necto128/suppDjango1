@@ -84,4 +84,3 @@ class UpStatRequestsAdmin(APIView):
             requests_model.save()
             send_mailing.delay(stats, requests_model.users_id)
         return redirect("admin/requests/")
-
